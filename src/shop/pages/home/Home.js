@@ -4,6 +4,7 @@ import Announcement from "../../components/Announcement";
 import Slider from "./components/Slider";
 import Categories from "../../components/Categories";
 import {Container} from "@material-ui/core";
+import Products from "./components/Products";
 
 const Home = (props) => (
     <div>
@@ -12,6 +13,7 @@ const Home = (props) => (
       <Container>
         <Slider/>
         <Categories/>
+        <Products/>
       </Container>
 
 
