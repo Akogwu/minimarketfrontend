@@ -53,15 +53,7 @@ const Slide = styled.div`
   }%);
   transition: all 1.5s ease;
 `
-const ImageContainer = styled.div`
-  height: 100%;
-  flex: 1;
-  width: 100%;
-`
-const Image = styled.img`
-  height: 100%;
-  
-`
+
 const InfoContainer = styled.div`
  
   width: 32.333%;
@@ -129,9 +121,6 @@ const Slider = () => {
                   {item.buttonTxt}
                 </Button>
               </InfoContainer>
-              {/*<ImageContainer>*/}
-              {/*  /!*<Image src={item.img}/>*!/*/}
-              {/*</ImageContainer>*/}
             </Slide>
           )
         }

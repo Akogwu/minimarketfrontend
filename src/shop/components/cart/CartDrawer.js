@@ -92,8 +92,6 @@ const CartDrawer = ({open,setOpen}) => {
             </Button>
           </ShoppingCartContentFooter>
         </ShoppingCartContent>
-
-
       </Drawer>
     </div>
   );

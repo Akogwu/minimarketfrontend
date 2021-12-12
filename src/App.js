@@ -1,10 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Home from "./shop/pages/home/Home";
+import {BrowserRouter as Router}  from "react-router-dom";
+import Routers from "./shop/Routers";
 
 function App() {
   return (
-    <Home/>
+    <Router>
+      <Routers/>
+    </Router>
+
   );
 }
 

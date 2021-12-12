@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {products} from "../store/data";
 import Product from "./Product";
+import SingleProduct from "./SingleProduct";
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
   padding: 3rem 0;
   justify-content: space-between;
   
@@ -18,13 +18,23 @@ const Title = styled.h2`
   margin-top: 1.6rem;
 `
 
+
 const Products = () => {
+  const [open,setOpen] = useState(false);
+  const [singleProduct,setSingleProduct] = useState({});
+
+  const loadProduct = (product) => {
+    setOpen(true);
+    setSingleProduct(product);
+  }
+
   return (
     <section>
       <Title>Fearued Products</Title>
       <Container>
-        {products.map(item => <Product key={item.id} item={item}/>)}
+        {products.map(item => <Product key={item.id} item={item} loadProduct={loadProduct} />)}
       </Container>
+      <SingleProduct product={singleProduct} open={open} setOpen={setOpen}/>
     </section>
 
   );

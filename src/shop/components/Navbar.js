@@ -10,6 +10,9 @@ import {
 import {Badge} from "@material-ui/core";
 import CartDrawer from "./cart/CartDrawer";
 import {GridViewOutlined} from "@mui/icons-material";
+import {Link} from "react-router-dom";
+import Announcement from "./Announcement";
+
 
 
 const Container = styled.div`
@@ -66,6 +69,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
 `
 const MenuItem = styled.div`
   font-size: 14px;
@@ -91,8 +95,10 @@ const StoreMenu = styled.div`
   margin-left: 5px;
 `
 
-const AccountMenu = styled.div`
-  
+const AccountMenu = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  position: relative;
 `
 
 const Location = styled.div`
@@ -101,7 +107,7 @@ const Location = styled.div`
   display: flex;
   align-items: center;
 `
-const Links = styled.a`
+const Links = styled (Link)`
   font-size: 0.9rem;
   text-decoration: underline;
   color: #fff;
@@ -115,15 +121,64 @@ const Cart = styled.div`
   flex-direction: column;
 `
 
+const DropMenu = styled.div`
+  position: absolute;
+  background-color: #fff;
+  height: 200px;
+  bottom: -220px;
+  z-index: 100;
+  padding: 1rem;
+  width: 200px;
+  -webkit-box-shadow: 0 1px 2px 1px rgb(0 0 0 / 15%);
+  box-shadow: 0 1px 2px 1px rgb(0 0 0 / 15%);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+const Button = styled(Link)`
+  background-color:#0071dc;
+  border: none;
+  padding: 12px;
+  border-radius: 62.5rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  text-align: center;
+  &:hover{
+    background-color:#004f9a;
+  }
+`
+
+const CreateButton = styled(Link)`
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  color: rgb(35, 47, 50);
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(35 47 50) 0px 0px 0px 1px inset;
+  border-radius: 62.5rem;
+  font-weight: 500;
+  margin-top: 16px;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+`
 
 const Navbar = () => {
   const [open,setOpen] = useState(false);
+  const [openWidget, setOpenWidget] = useState(false);
 
   return (
     <Fragment>
       <CartDrawer open={open} setOpen={setOpen}/>
+      <Announcement/>
       <Container>
-        <Wrapper>
+        <Wrapper >
           <Left>
             <Logo>
               MiniMarket
@@ -136,8 +191,6 @@ const Navbar = () => {
               </StoreMenu>
             </MenuItem>
           </Left>
-
-
           <Center>
             <SearchContainer>
               <Input placeholder="Search everything at MiniMarket online"/>
@@ -151,15 +204,15 @@ const Navbar = () => {
             </SearchContainer>
           </Center>
           <Right>
-            <MenuItem>
+            <MenuItem onMouseOver={setOpenWidget}>
               <PersonOutline/>
-              <AccountMenu>
+              <AccountMenu to="/login" >
                 Sign in<br/>
                 <strong>
                   Account
                 </strong>
-              </AccountMenu>
 
+              </AccountMenu>
             </MenuItem>
             <MenuItem>
               <Cart onClick={setOpen}>
@@ -168,15 +221,20 @@ const Navbar = () => {
                 </Badge>
                 <small style={{ fontSize:'9px' }}>$0.00</small>
               </Cart>
-
             </MenuItem>
+            {openWidget && <DropMenu onMouseOut={() => setOpenWidget(false)}>
+              <Button to="/login">Sign in</Button>
+              <CreateButton to="/signup">
+                Create an account
+              </CreateButton>
+            </DropMenu>}
           </Right>
         </Wrapper>
         <Location>
-          <Links href="#">
+          <Links to="/">
             <LocalConvenienceStoreOutlined style={{ marginRight:'3px' }}/> Fairfield supercenter
           </Links> |
-          <Links href="#">
+          <Links to="/">
             <LocationOnOutlined/> Fairfield, 52557
           </Links>
         </Location>

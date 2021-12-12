@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.MuiBadge-badge{
+  background-color: #ffc220;
+  color: #282c34;
+  border: 0.24px solid #282c34;
+}

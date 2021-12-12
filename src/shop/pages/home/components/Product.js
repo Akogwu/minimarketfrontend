@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
 import {AddOutlined} from "@material-ui/icons";
+import {Link} from "react-router-dom"
 
 const Container = styled.div`
   flex: 1;
   margin: 5px;
   min-width: 240px;
+  
+  & a{
+   text-decoration: none;
+    color: rgba(0,0,0,0.56) ;
+  }
 `
 
 const Header = styled.div`
@@ -55,25 +61,28 @@ const Title = styled.p`
 const Price = styled.p`
   font-weight: 700;
 `
-const Product = ({item}) => {
+const Product = ({item,loadProduct}) => {
   return (
     <Container>
       <Header>
-        <Image src={item.img}/>
+          <Image src={item.img} onClick={() => loadProduct(item)}/>
         <ButtonContainer>
           <Button>
             <AddOutlined/> Add
           </Button>
         </ButtonContainer>
       </Header>
-      <Body>
-        <Price>
-          ${item.price}
-        </Price>
-        <Title>
-          {item.title}
-        </Title>
-      </Body>
+      <Link to="/">
+        <Body>
+          <Price>
+            ${item.price}
+          </Price>
+          <Title>
+            {item.title}
+          </Title>
+        </Body>
+      </Link>
+
     </Container>
   );
 };
