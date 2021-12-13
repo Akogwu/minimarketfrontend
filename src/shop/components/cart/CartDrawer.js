@@ -1,8 +1,8 @@
 import React from 'react';
-import {Close} from "@material-ui/icons";
+import { Close } from "@material-ui/icons";
 import Drawer from "@mui/material/Drawer";
 import styled from "styled-components";
-import {cartData} from "../../pages/home/store/data";
+import { cartData } from "../../pages/home/store/data";
 import CartItem from "./CartItem";
 
 const ShoppingCartContent = styled.div`
@@ -38,7 +38,6 @@ const CartBody = styled.div`
   margin-top: 20%;
   
 `
-
 const ShoppingCartContentFooter = styled.div`
   position: fixed;
   width: inherit;
@@ -57,7 +56,6 @@ const SubTotal = styled.div`
   padding-bottom: 16px;
   
 `
-
 const Button = styled.button`
   background-color:#0071dc;
   border: none;
@@ -68,18 +66,18 @@ const Button = styled.button`
   font-size: .9rem;
 `
 
-const CartDrawer = ({open,setOpen}) => {
+const CartDrawer = ({ open, setOpen }) => {
   return (
     <div>
-      <Drawer onClose={ ()=> setOpen(false)} anchor="right" open={open} >
+      <Drawer onClose={() => setOpen(false)} anchor="right" open={open} >
         <ShoppingCartContent className="CartContent">
           <ShoppingCartContentHeader>
             <p>Cart <span>(4)</span></p>
-            <Close onClick={ () => setOpen(false)} style={{cursor:"pointer"}}/>
+            <Close onClick={() => setOpen(false)} style={{ cursor: "pointer" }} />
           </ShoppingCartContentHeader>
 
           <CartBody>
-            {cartData.map( item => <CartItem key={item.id} item={item}/> )}
+            {cartData.map(item => <CartItem key={item.id} item={item} />)}
           </CartBody>
 
           <ShoppingCartContentFooter>
