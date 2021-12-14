@@ -8,14 +8,13 @@ const columns = [
   {title:"Title", field:"title"},
   {title:"Price", field:"price"},
   {title:"Image", field:"img",
-    render:(rowData) => <img src={rowData.img} style={{ width:40, borderRaduis:"50%" }} alt="product image"/>
+    render:(rowData) => <img src={rowData.img} style={{ width:40, borderRaduis:"50%" }} alt="product"/>
   }
 ]
 
 const ProductsTable = ({products}) => {
   const data = [];
   products.map( product => data.push(product));
-
   return (
     <Container>
       <MaterialTable icons={tableIcons} title="Products" columns={columns} data={data}

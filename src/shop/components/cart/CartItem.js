@@ -31,11 +31,13 @@ const CartAction = styled.div`
   align-items: center;
 
 `
-const Link = styled.a`
+const Link = styled.button`
   flex: 1;
   text-decoration: underline;
   font-size: 80%;
   cursor: pointer;
+  background: transparent;
+  border: none;
   &:hover{
     text-decoration: none;
   }
@@ -73,7 +75,7 @@ const Button = styled.button`
 `
 
 
-const CartItem = ({item}) => {
+const CartItem = ({item,removeFromCart}) => {
   return (
     <Container>
 
@@ -88,8 +90,8 @@ const CartItem = ({item}) => {
       </CartDetails>
 
       <CartAction>
-        <Link>Remove</Link>
-        <Link>Save for later</Link>
+        <Link onClick={() => removeFromCart(item)}>Remove</Link>
+
         <QuantityStepper>
             <Button>-</Button>
             <Quantity>1</Quantity>

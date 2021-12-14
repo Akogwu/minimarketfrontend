@@ -169,13 +169,13 @@ const CreateButton = styled(Link)`
   text-decoration: none;
 `
 
-const Navbar = () => {
+const Navbar = ({cartItems,removeFromCart}) => {
   const [open,setOpen] = useState(false);
   const [openWidget, setOpenWidget] = useState(false);
 
   return (
     <Fragment>
-      <CartDrawer open={open} setOpen={setOpen}/>
+      <CartDrawer open={open} setOpen={setOpen} cartItems={cartItems} removeFromCart={removeFromCart}/>
       <Announcement/>
       <Container>
         <Wrapper >

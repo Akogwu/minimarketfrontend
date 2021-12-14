@@ -68,29 +68,30 @@ const Button = styled.button`
   font-size: .9rem;
 `
 
-const CartDrawer = ({open,setOpen}) => {
+const CartDrawer = ({open,setOpen,cartItems,removeFromCart}) => {
   return (
     <div>
       <Drawer onClose={ ()=> setOpen(false)} anchor="right" open={open} >
         <ShoppingCartContent className="CartContent">
           <ShoppingCartContentHeader>
-            <p>Cart <span>(4)</span></p>
+            {cartItems.length === 0 ?<span>Your cart is empty</span>: <p>Cart <span>({cartItems.length})</span></p>}
+
             <Close onClick={ () => setOpen(false)} style={{cursor:"pointer"}}/>
           </ShoppingCartContentHeader>
 
           <CartBody>
-            {cartData.map( item => <CartItem key={item.id} item={item}/> )}
+            {cartItems.length === 0 ? <div>Cart is empty</div>: cartItems.map( item => <CartItem key={item.id} item={item} removeFromCart={removeFromCart}/> )}
           </CartBody>
 
-          <ShoppingCartContentFooter>
+          {cartItems.length !== 0 && <ShoppingCartContentFooter>
             <SubTotal>
               <p>Estimated total</p>
-              <h3>$189.99</h3>
+              <h3>${cartItems.reduce((a,c)=> a+c.price * c.count, 0)}</h3>
             </SubTotal>
             <Button>
               Continue to checkout
             </Button>
-          </ShoppingCartContentFooter>
+          </ShoppingCartContentFooter>}
         </ShoppingCartContent>
       </Drawer>
     </div>

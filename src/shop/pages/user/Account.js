@@ -6,7 +6,7 @@ import {Container, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
 import {makeStyles} from "@mui/styles";
 import styled from "styled-components";
-import {RateReviewOutlined, Receipt} from "@material-ui/icons";
+import {RateReviewOutlined} from "@material-ui/icons";
 import {
   DirectionsCarFilledOutlined,
   PersonOutlined,

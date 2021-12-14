@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import {products} from "../store/data";
 import Product from "./Product";
 import SingleProduct from "./SingleProduct";
 
@@ -19,10 +18,14 @@ const Title = styled.h2`
 `
 
 
-const Products = () => {
+const Products = ({products,addProductToCart}) => {
   const [open,setOpen] = useState(false);
   const [singleProduct,setSingleProduct] = useState({});
+  const [cartItems,setCartitems] = useState([]);
 
+
+
+  
   const loadProduct = (product) => {
     setOpen(true);
     setSingleProduct(product);
@@ -32,7 +35,7 @@ const Products = () => {
     <section>
       <Title>Fearued Products</Title>
       <Container>
-        {products.map(item => <Product key={item.id} item={item} loadProduct={loadProduct} />)}
+        {products.map(item => <Product key={item.id} item={item} loadProduct={loadProduct} addProductToCart={addProductToCart} />)}
       </Container>
       <SingleProduct product={singleProduct} open={open} setOpen={setOpen}/>
     </section>

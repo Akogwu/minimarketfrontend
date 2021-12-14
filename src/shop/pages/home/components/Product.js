@@ -61,13 +61,13 @@ const Title = styled.p`
 const Price = styled.p`
   font-weight: 700;
 `
-const Product = ({item,loadProduct}) => {
+const Product = ({item,loadProduct,addProductToCart}) => {
   return (
     <Container>
       <Header>
           <Image src={item.img} onClick={() => loadProduct(item)}/>
         <ButtonContainer>
-          <Button>
+          <Button onClick={() => addProductToCart(item)}>
             <AddOutlined/> Add
           </Button>
         </ButtonContainer>
